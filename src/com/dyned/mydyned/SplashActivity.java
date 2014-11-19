@@ -42,6 +42,8 @@ public class SplashActivity extends SherlockActivity {
 			MDAGCMRegistrar.registerGCM(this);
 		}
 		
+		System.out.println("anjing: " + PreferencesUtil.getInstance(this).getAppKey());
+				
 		logoutFacebook();
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {	

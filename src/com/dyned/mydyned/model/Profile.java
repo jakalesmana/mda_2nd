@@ -169,15 +169,18 @@ public class Profile implements Serializable {
 	
 	public static Profile parseProfile(String data){
 		try {
+			Profile p = new Profile();
 			JSONObject obj = new JSONObject(data);
 			JSONObject objData = obj.getJSONObject("data");
+			
 			String appkey = "";
 			if (objData.has("app_key")) {
 				appkey = objData.getString("app_key");
 			}
-			JSONObject objProfile = objData.getJSONObject("profile");
-			Profile p = new Profile();
 			p.setAppKey(appkey);
+			
+			JSONObject objProfile = objData.getJSONObject("profile");
+			
 			if (objProfile.has("id")) {
 				p.setId(objProfile.getInt("id"));
 			}

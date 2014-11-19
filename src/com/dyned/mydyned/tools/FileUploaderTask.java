@@ -73,6 +73,8 @@ public class FileUploaderTask extends AsyncTask<String, Integer, String> {
 			postRequest.addHeader("X-DEVICE-MODEL", AppUtil.getDeviceName());
 			postRequest.addHeader("X-DEVICE-OS", AppUtil.getOsversion());
 			
+			postRequest.addHeader("X-APP-KEYS", PreferencesUtil.getInstance(context).getAppKey());
+			
 			MultipartEntity reqEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
 			ContentBody cbFile = new FileBody(file, "image/jpeg");
 			reqEntity.addPart("userfile", cbFile);
@@ -99,11 +101,7 @@ public class FileUploaderTask extends AsyncTask<String, Integer, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-		if(result.startsWith("error")){
-			
-		} else {
-			listener.onDone(result);
-		}
+		listener.onDone(result);
 		super.onPostExecute(result);
 	}
 

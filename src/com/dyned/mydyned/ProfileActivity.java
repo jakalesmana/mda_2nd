@@ -196,8 +196,7 @@ public class ProfileActivity extends BaseActivity {
 		
 		btnSignout.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				PreferencesUtil.getInstance(ProfileActivity.this).logout();
-				finish();
+				showLogoutConfirmation();
 			}
 		});
 		
@@ -314,6 +313,7 @@ public class ProfileActivity extends BaseActivity {
 						pref.setAvatar(me.getAvatar());
 						
 						if (bitmap == null) {
+							System.out.println("image was null");
 							dialog.dismiss();
 							Toast.makeText(ProfileActivity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
 							finish();
@@ -359,7 +359,7 @@ public class ProfileActivity extends BaseActivity {
 	private void uploadAvatar() {
 		FileUploaderTask task = new FileUploaderTask(ProfileActivity.this, new InternetConnectionListener() {
 			public void onStart() {
-				
+				System.out.println("start uploading image: " + PreferencesUtil.getInstance(ProfileActivity.this).getAppKey());
 			}
 			
 			public void onDone(String str) {
@@ -390,7 +390,7 @@ public class ProfileActivity extends BaseActivity {
 				Toast.makeText(ProfileActivity.this, message + ", try again later.", Toast.LENGTH_SHORT).show();
 			}
 		}, ImageUtil.ConvertToFile(ProfileActivity.this, bitmap, 100, "" + System.currentTimeMillis() + ".jpg"));
-		task.addPair("app_key", profile.getAppKey());
+//		task.addPair("X-APP-KEYS", PreferencesUtil.getInstance(this).getAppKey());
 		task.execute(URLAddress.UPDATE_PROFILE_AVATAR);
 	}
 
@@ -495,6 +495,54 @@ public class ProfileActivity extends BaseActivity {
 					.append(day));
 		}
 	};
+	
+	private void showLogoutConfirmation() {
+		final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("");
+		alertDialog.setMessage("Are you sure you want to logout?");
+				
+		alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				alertDialog.dismiss();
+			}
+		});
+		
+		alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {				
+				doLogout();
+			}
+		});
+		
+		alertDialog.show();
+	}
+	
+	private void doLogout() {
+		PostInternetTask task = new PostInternetTask(this, new InternetConnectionListener() {
+			public void onStart() {
+				handler.post(new Runnable() {
+					public void run() {
+				    	dialog = ProgressDialog.show(ProfileActivity.this, "", "Loading..");				
+					}
+				});
+			}
+			
+			public void onDone(String str) {
+				System.out.println("response logout: " + str);
+				
+				PreferencesUtil.getInstance(ProfileActivity.this).logout();
+				dialog.dismiss();
+				finish();
+			}
+			
+			@Override
+			public void onConnectionError(String message) {
+				dialog.dismiss();
+				Toast.makeText(ProfileActivity.this, message + ", try again later.", Toast.LENGTH_SHORT).show();
+			}
+		});
+		task.addPair("app_key", PreferencesUtil.getInstance(this).getAppKey());
+		task.execute(URLAddress.LOGOUT_URL);
+	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

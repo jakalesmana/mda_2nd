@@ -40,10 +40,9 @@ public class URLAddress {
 	public static final String UPDATE_PROFILE_AVATAR = DYNED_DOMAIN + "/api/account/update_picture";
 	public static final String REGISTER_URL = DYNED_DOMAIN + "/api/oauth/register";
 
-	public static final String SET_DEVICE_ID = DYNED_DOMAIN + "/api/device/add";
-//	public static final String RECORD_URL = DYNED_DOMAIN + "/account";
-	
+	public static final String SET_DEVICE_ID = DYNED_DOMAIN + "/api/device/add";	
 	public static final String RECORD_URL = DYNED_DOMAIN + "/account";
+	public static final String LOGOUT_URL = DYNED_DOMAIN + "/api/oauth/logout";
 	
 	public static final String GEO_IP = "https://freegeoip.net/json/";
 	

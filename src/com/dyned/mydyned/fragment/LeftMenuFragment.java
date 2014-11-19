@@ -266,7 +266,7 @@ public class LeftMenuFragment extends SherlockFragment {
 					i.putExtra("profile", p);
 					startActivity(i);
 				} else {
-					Toast.makeText(getSherlockActivity(), "Can not profile" + ", try again later.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getSherlockActivity(), "Can not load profile" + ", try again later.", Toast.LENGTH_SHORT).show();
 				}
 			}
 
