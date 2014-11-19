@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="FullHeightDialog" parent="android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme" parent="@style/Theme.Sherlock.Light">
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+    </style>
+    <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar">
+        <item name="indeterminateProgressStyle">@style/IndeterminateProgress</item>
+		<item name="titleTextStyle">@style/AppTheme.ActionBar.TitleTextStyle</item>
+    </style>
+    <style name="IndeterminateProgress" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/abs__progress_medium_holo</item>
+    </style>
+	<style name="AppTheme.ActionBar.TitleTextStyle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+</resources>

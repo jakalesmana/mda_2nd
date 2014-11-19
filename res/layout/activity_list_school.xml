@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_pattern_repeat"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+
+        <Button
+            android:id="@+id/btnNearest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_selectable_bg"
+            android:padding="10dp"
+            android:text="Search"
+            android:textColor="#FFFFFF" />
+
+    </FrameLayout>
+
+    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+        android:id="@+id/lvSchool"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:cacheColorHint="#00000000"
+        android:visibility="gone" />
+    
+    <!-- expandable listview -->
+    <com.dyned.mydyned.component.PinnedHeaderExpListView
+        android:id="@+id/lvSchoolExp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    
+
+</LinearLayout>

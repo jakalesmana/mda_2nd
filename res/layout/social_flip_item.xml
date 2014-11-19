@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
+    
+    <ViewFlipper
+            android:id="@+id/flipperSocial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <FrameLayout android:id="@+id/layoutIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1dp"
+                    android:background="#3b5998"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" >
+
+                    <ImageView
+                        android:id="@+id/imgIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/ic_social" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/txtSocialTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#3b5998"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="30dp"
+                    android:paddingLeft="20dp"
+                    android:text="Social Media"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutItem"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3b5998" >
+
+                <ImageView
+                    android:id="@+id/imgPrev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_prev" />
+
+                <HorizontalScrollView
+                    android:id="@+id/svSocial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imgNext"
+                    android:layout_toRightOf="@+id/imgPrev"
+                    android:fadingEdge="none"
+                    android:scrollbars="none" >
+
+                    <LinearLayout
+                        android:id="@+id/layoutSocial"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <ImageView
+                    android:id="@+id/imgNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_next" />
+
+            </RelativeLayout>
+        </ViewFlipper>
+
+</FrameLayout>

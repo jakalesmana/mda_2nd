@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <FrameLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="#a9aaac" >
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="2"
+            android:maxLines="2"
+            android:padding="15dp"
+            android:text="Dyned Indonesia"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF" />
+
+    </FrameLayout>
+
+</LinearLayout>

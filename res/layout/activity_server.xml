@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f2f2f2"
+        android:padding="10dp"
+        android:text="Server Status"
+        android:textStyle="bold" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView 
+        android:id="@+id/lvServer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    
+</LinearLayout>
