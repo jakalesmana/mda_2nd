@@ -5,6 +5,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings.ZoomDensity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -26,7 +28,7 @@ public class WebViewerActivity extends BaseActivity {
 		
 		if(checkUrl(url)) return;
 		
-		WebView wvContent = (WebView)findViewById(R.id.wvContent);
+		WebView wvContent = (WebView)findViewById(R.id.wvContent);		
 //		wvContent.getSettings().setSupportZoom(true);
 		wvContent.getSettings().setDefaultZoom(ZoomDensity.FAR);
 		wvContent.getSettings().setJavaScriptEnabled(true);
@@ -96,6 +98,14 @@ public class WebViewerActivity extends BaseActivity {
 			view.loadUrl("http://play.google.com/store/apps/" + uri.getHost());
 			return false;
 		}
+	}
+	
+	@Override
+	protected void onStop() {
+		CookieSyncManager.createInstance(this);
+		CookieManager cookieManager = CookieManager.getInstance();
+		cookieManager.removeAllCookie();
+		super.onStop();
 	}
 
 }

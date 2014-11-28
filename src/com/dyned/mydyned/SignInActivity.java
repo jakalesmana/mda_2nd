@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -73,6 +75,10 @@ public class SignInActivity extends BaseActivity {
         
         txtForgotPassword.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				CookieSyncManager.createInstance(SignInActivity.this);
+				CookieManager cookieManager = CookieManager.getInstance();
+				cookieManager.removeAllCookie();
+				
 				Intent i = new Intent(SignInActivity.this, WebViewerActivity.class);
 				i.putExtra("url_menu", URLAddress.FORGOT_PASSWORD_URL);
 				startActivity(i);
